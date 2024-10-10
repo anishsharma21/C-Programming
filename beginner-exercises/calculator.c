@@ -28,6 +28,7 @@ int main() {
 	    firstInt /= secondInt;
 	    break;
 	default:
+	    printf("Invalid operation.\n");
 	    break;
     }
 
