@@ -14,22 +14,24 @@ int main() {
     printf("Type in another integer: ");
     scanf("%d", &secondInt);
 
-    if (operation == '+') {
-	printf("Output: %d", firstInt + secondInt);
-    }
-    else if (operation == '-') {
-	printf("Output: %d", firstInt - secondInt);
-    }
-    else if (operation == '*') {
-	printf("Output: %d", firstInt * secondInt);
-    }
-    else if (operation == '/') {
-	printf("Output: %d", firstInt / secondInt);
-    }
-    else {
-	printf("Can't do that operation.");
+    switch (operation) {
+	case '+':
+	    firstInt += secondInt;
+	    break;
+	case '-':
+	    firstInt -= secondInt;
+	    break;
+	case '*':
+	    firstInt *= secondInt;
+	    break;
+	case '/':
+	    firstInt /= secondInt;
+	    break;
+	default:
+	    break;
     }
 
-    printf("\n");
+    printf("Output: %d\n", firstInt);
+
     return 0;
 }
