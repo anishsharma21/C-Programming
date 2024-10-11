@@ -3,6 +3,7 @@
 
 void fib(int num);
 void fib2(int num, int arr[]);
+void fib3(int *num, int low, int high);
 void printarr(int arr[], int length);
 
 int main() {
@@ -22,6 +23,8 @@ int main() {
     printarr(arr, num);
 
     free(arr);
+
+    fib3(&num, 1, 1);
 
     return 0;
 }
@@ -48,6 +51,21 @@ void fib2(int num, int arr[]) {
     for (int i = 2; i < num; i++) {
 	arr[i] = arr[i-1] + arr[i-2];
     }
+}
+
+void fib3(int *num, int low, int high) {
+    if (*num < 1) {
+	return;
+    }
+    if (*num < 2) {
+	printf("%d\n", low);
+	return;
+    }
+    printf("%d ", low);
+    int temp = high;
+    high += low;
+    *num -= 1;
+    return fib3(num, temp, high);
 }
 
 void printarr(int arr[], int length) {
