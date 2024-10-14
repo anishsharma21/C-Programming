@@ -1,21 +1,17 @@
 #include <stdio.h>
 
-void power(int *base, int *pow);
+int power(int base, int pow);
 
 int main() {
-    int base, pow;
-    printf("Type in the base: ");
-    scanf("%d", &base);
-    printf("Type in the power: ");
-    scanf("%d", &pow);
-    power(&base, &pow);
-    printf("Result: %d\n", base);
-    printf("New values: %d %d\n", base, pow);
+    for (int i = 0; i < 5; i++)
+	printf("%d %d %d\n", i, power(2, i), power(-3, i));
+    return 0;
 }
 
-void power(int *base, int *pow) {
-    int result = 1;
-    for (int i = 0; i < *pow; i++)
-	result *= (*base);
-    *base = result;
+int power(int base, int pow) {
+    int p = 1;
+    for (int i = 0; i < pow; i++) {
+	p *= base;
+    }
+    return p;
 }
