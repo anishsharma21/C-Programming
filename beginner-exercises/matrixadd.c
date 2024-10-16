@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void matrixadd(int rows, int columns, int matrix1[rows][columns], int matrix2[rows][columns]);
+void matrixaddp(int rows, int columns, int* matrix1, int* matrix2);
 void printmatrix(int rows, int columns, int matrix[rows][columns]);
 
 int main() {
@@ -12,7 +13,7 @@ int main() {
     int matrix2[3][3] = {
         {4, 6, -3},
         {0, -1, 9},
-        {9, -2, 4}
+        {-9, -2, 4}
     };
     int rows = sizeof(matrix1) / sizeof(matrix1[0]);
     int columns = sizeof(matrix1[0]) / sizeof(matrix1[0][0]);
@@ -20,6 +21,9 @@ int main() {
     printf("\n");
     printmatrix(rows, columns, matrix2);
     matrixadd(rows, columns, matrix1, matrix2);
+    printf("\n");
+    printmatrix(rows, columns, matrix1);
+    matrixaddp(rows, columns, *matrix1, *matrix2);
     printf("\n");
     printmatrix(rows, columns, matrix1);
     return 0;
@@ -34,15 +38,22 @@ void matrixadd(int rows, int columns, int matrix1[rows][columns], int matrix2[ro
     }
 }
 
+void matrixaddp(int rows, int columns, int* matrix1, int* matrix2) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            *(matrix1 + i * columns + j) += *(matrix2 + i * columns + j);
+        }
+    }
+}
 
 void printmatrix(int rows, int columns, int matrix[rows][columns]) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             if (j == 0)
-                printf("%3d", matrix[i][j]);
+                printf("%d", matrix[i][j]);
             else
-                printf(" %3d", matrix[i][j]);
+                printf(" %d", matrix[i][j]);
         }
-        printf("\n\n");
+        printf("\n");
     }
 }
