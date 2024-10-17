@@ -11,17 +11,17 @@ int main() {
 
     int *largest = NULL;
     if (first > second) {
-	if (first > third) {
-	    largest = &first;
-	} else {
-	    largest = &third;
-	}
+        if (first > third) {
+            largest = &first;
+        } else {
+            largest = &third;
+        }
     } else {
-	if (second > third) {
-	    largest = &second;
-	} else {
-	    largest = &third;
-	}
+        if (second > third) {
+            largest = &second;
+        } else {
+            largest = &third;
+        }
     }
 
     printf("Largest value: %d\n", *largest);

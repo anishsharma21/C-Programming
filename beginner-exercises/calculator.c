@@ -15,21 +15,21 @@ int main() {
     scanf("%d", &secondInt);
 
     switch (operation) {
-	case '+':
-	    firstInt += secondInt;
-	    break;
-	case '-':
-	    firstInt -= secondInt;
-	    break;
-	case '*':
-	    firstInt *= secondInt;
-	    break;
-	case '/':
-	    firstInt /= secondInt;
-	    break;
-	default:
-	    printf("Invalid operation.\n");
-	    break;
+        case '+':
+            firstInt += secondInt;
+            break;
+        case '-':
+            firstInt -= secondInt;
+            break;
+        case '*':
+            firstInt *= secondInt;
+            break;
+        case '/':
+            firstInt /= secondInt;
+            break;
+        default:
+            printf("Invalid operation.\n");
+            break;
     }
 
     printf("Output: %d\n", firstInt);

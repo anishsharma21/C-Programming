@@ -10,6 +10,6 @@ int main() {
     c = 'A';
 
     printf("%d\n%.2f\n%c\n", a, b, c);
-    
+
     return 0;
 }
