@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-float calcsimpint(float principal, float rate, float time) {
-    return principal * (rate / 100) * time;
-}
-
-void calcsimpintp(float *principal, float *rate, float *time, float *value) {
-    *value = *principal * (*rate / 100) * *time;
-}
+float calcsimpint(float principal, float rate, float time);
+void calcsimpintp(float *principal, float *rate, float *time, float *value);
 
 int main() {
     float principal, rate, time, value;
@@ -20,4 +15,12 @@ int main() {
     printf("%.f\n", result);
     calcsimpintp(&principal, &rate, &time, &value);
     printf("%.f\n", value);
+}
+
+float calcsimpint(float principal, float rate, float time) {
+    return principal * (rate / 100) * time;
+}
+
+void calcsimpintp(float *principal, float *rate, float *time, float *value) {
+    *value = *principal * (*rate / 100) * *time;
 }

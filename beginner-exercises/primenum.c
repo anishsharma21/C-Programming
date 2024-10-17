@@ -1,15 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool prime(int num) {
-    for (int i = 2; i < num; i++) {
-        if (i * i > num)
-            return true;
-        if (num % i == 0)
-            return false;
-    }
-    return true;
-}
+bool prime(int num);
 
 int main() {
     int num;
@@ -25,4 +17,14 @@ int main() {
         printf("%d is not prime\n", num);
     }
     return 0;
+}
+
+bool prime(int num) {
+    for (int i = 2; i < num; i++) {
+        if (i * i > num)
+            return true;
+        if (num % i == 0)
+            return false;
+    }
+    return true;
 }

@@ -1,6 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void fib(int num);
+void fib2(int num, int arr[]);
+void fib3(int *num, int low, int high);
+void printarr(int arr[], int length);
+
+int main() {
+    int num = 1;
+    printf("How many fib nums? ");
+    scanf("%d", &num);
+
+    fib(num);
+
+    int *arr = (int *)malloc(num * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    fib2(num, arr);
+    printarr(arr, num);
+
+    free(arr);
+
+    fib3(&num, 1, 1);
+
+    return 0;
+}
+
 void fib(int num) {
     int prev = 0, cur = 1;
 
@@ -46,27 +74,4 @@ void printarr(int arr[], int length) {
         printf("%d ", arr[i]);
     }
     printf("\n");
-}
-
-int main() {
-    int num = 1;
-    printf("How many fib nums? ");
-    scanf("%d", &num);
-
-    fib(num);
-
-    int *arr = (int *)malloc(num * sizeof(int));
-    if (arr == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
-
-    fib2(num, arr);
-    printarr(arr, num);
-
-    free(arr);
-
-    fib3(&num, 1, 1);
-
-    return 0;
 }

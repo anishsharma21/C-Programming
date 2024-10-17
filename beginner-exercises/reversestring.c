@@ -1,13 +1,6 @@
 #include <stdio.h>
 
-void reverseString(char string[], int length) {
-    char temp;
-    for (int i = 0; i < (length - 1) / 2; i++) {
-        temp = string[i];
-        string[i] = string[length - i - 2];
-        string[length - i - 2] = temp;
-    }
-}
+void reverseString(char string[], int length);
 
 int main() {
     char string[] = "bottle";
@@ -16,4 +9,13 @@ int main() {
     reverseString(string, stringLength);
     printf("Reversed string: %s\n", string);
     return 0;
+}
+
+void reverseString(char string[], int length) {
+    char temp;
+    for (int i = 0; i < (length - 1) / 2; i++) {
+        temp = string[i];
+        string[i] = string[length - i - 2];
+        string[length - i - 2] = temp;
+    }
 }

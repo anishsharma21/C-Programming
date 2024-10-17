@@ -2,20 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-bool palindrome(char *str, int length) {
-    if (length == 1) {
-        return true;
-    }
-    int low = 0, high = length - 1;
-    while (low < high) {
-        if (*(str + low) != *(str + high)) {
-            return false;
-        }
-        low++;
-        high--;
-    }
-    return true;
-}
+bool palindrome(char *str, int strlen);
 
 int main() {
     char input[100];
@@ -29,4 +16,19 @@ int main() {
     }
     printf("%s is not a palindrome\n", input);
     return 0;
+}
+
+bool palindrome(char *str, int length) {
+    if (length == 1) {
+        return true;
+    }
+    int low = 0, high = length - 1;
+    while (low < high) {
+        if (*(str + low) != *(str + high)) {
+            return false;
+        }
+        low++;
+        high--;
+    }
+    return true;
 }
