@@ -12,20 +12,19 @@ int main() {
     srand(time(0));
     int target = (rand() % MAX) + MIN;
 
-    while (1) {
+    do {
         printf("Guess: ");
         scanf("%d", &guess);
         clearInputBuffer();
-        guesses++;
-
-        if (guess == target) {
-            printf("\nYou guessed right!\n");
-            break;
-        } else if (guess < target)
-            printf("You guessed too LOW.\n");
+        if (guess > target)
+            printf("Guess was too HIGH.\n");
         else
-            printf("You guessed too HIGH.\n");
-    }
+            printf("Guess was too LOW.\n");
+        guesses++;
+    } while (guess != target);
+
+    printf("\nAnswer: %d\n", target);
+    printf("Guesses: %d\n", guesses - 1);
 
     return 0;
 }
