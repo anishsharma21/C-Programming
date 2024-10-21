@@ -5,16 +5,29 @@ int my_getline(char line[], int maxline);
 void copy(char to[], char from[]);
 
 int main() {
-    int len, max;
+    int total_len, len, max;
     char line[MAXLINE], longest[MAXLINE];
+    int is_continuation;
 
-    max = 0;
+    max = is_continuation = 0;
     while ((len = my_getline(line, MAXLINE)) > 0) {
-        if (len > max) {
-            max = len;
-            copy(longest, line);
+        if (is_continuation) {
+            total_len += len;
+        } else {
+            total_len = len;
         }
-        printf("Line length: %d\n", len);
+        if (line[len - 1] != '\n') {
+            is_continuation = 1;
+        }
+        else {
+            is_continuation = 0;
+            printf("Line length: %d\n", len);
+            if (total_len > max) {
+                max = total_len;
+                copy(longest, line);
+            }
+            total_len = 0;
+        }
     }
     if (max > 0) {
         printf("\nLongest line: %s", longest);
