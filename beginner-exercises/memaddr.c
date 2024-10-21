@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-void printbinary(uintptr_t n);
+void printbinary(uintptr_t);
 
 int main() {
     char x = 'X';

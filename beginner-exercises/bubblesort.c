@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-void bubblesort(int arr[], int length);
-void printarray(int arr[], int length);
+void bubblesort(int*, int);
+void printarray(int*, int);
 
 int main() {
     int arr1[] = {3, 5, 1, 4, 2};
