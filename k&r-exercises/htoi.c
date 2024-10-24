@@ -11,11 +11,11 @@ int main() {
     char hex4[] = "HAHA";
     char hex5[] = "123555L";
 
-    printf("Hexadecimal: %s, Integer: %d\n", hex1, htoi(hex1, 2));
-    printf("Hexadecimal: %s, Integer: %d\n", hex2, htoi(hex2, 4));
-    printf("Hexadecimal: %s, Integer: %d\n", hex3, htoi(hex3, 5));
-    printf("Hexadecimal: %s, Integer: %d\n", hex4, htoi(hex4, 4));
-    printf("Hexadecimal: %s, Integer: %d\n", hex5, htoi(hex5, 7));
+    printf("Hexadecimal: %s, Integer: %d\n", hex1, htoi(hex1, sizeof(hex1) - 1));
+    printf("Hexadecimal: %s, Integer: %d\n", hex2, htoi(hex2, sizeof(hex2) - 1));
+    printf("Hexadecimal: %s, Integer: %d\n", hex3, htoi(hex3, sizeof(hex3) - 1));
+    printf("Hexadecimal: %s, Integer: %d\n", hex4, htoi(hex4, sizeof(hex4) - 1));
+    printf("Hexadecimal: %s, Integer: %d\n", hex5, htoi(hex5, sizeof(hex5) - 1));
 
     return 0;
 }
@@ -34,4 +34,8 @@ int htoi(char hex[], int len) {
         }
     }
     return n;
+}
+
+int htoix(char hex[], int len) {
+    return 0;
 }
