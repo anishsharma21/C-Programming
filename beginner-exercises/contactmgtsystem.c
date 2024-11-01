@@ -16,12 +16,30 @@ int main() {
     printf("*************************\n\n");
 
     char userChoice;
-    do {
+    while (1) {
         printf("v - View contacts\na - Add\nd - Delete\nq - Quit\n");
         printf("\nInput: ");
         userChoice = getchar();
         clearInputBuffer();
-    } while (userChoice != 'q');
+        printf("\n");
+
+        switch (userChoice) {
+            case 'v':
+                printf("User choice is to view contacts\n");
+                break;
+            case 'a':
+                printf("User choice is to add a new contact\n");
+                break;
+            case 'd':
+                printf("User choice is to delete a contact\n");
+                break;
+            case 'q':
+                return 0;
+            default:
+                printf("HI\n");
+                break;
+        }
+    }
 
     return 0;
 }
