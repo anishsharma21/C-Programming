@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 
+#define NUMBER_OF_CONTACT_ATTRIBUTES 4
+
+void viewContacts();
 void clearInputBuffer();
 
 typedef struct {
@@ -25,7 +27,8 @@ int main() {
 
         switch (userChoice) {
             case 'v':
-                printf("User choice is to view contacts\n");
+                printf("User choice is to view contacts\n\n");
+                viewContacts();
                 break;
             case 'a':
                 printf("User choice is to add a new contact\n");
@@ -36,12 +39,37 @@ int main() {
             case 'q':
                 return 0;
             default:
-                printf("HI\n");
+                printf("Choose a valid option (v, a, d, q)\n");
                 break;
         }
     }
 
     return 0;
+}
+
+// we want to display first name, last name, age, and email
+void viewContacts() {
+    FILE* pF;
+    pF = fopen("contacts.txt", "r");
+    if (pF == NULL) {
+        fprintf(stderr, "Error opening contacts file.\n");
+        return;
+    }
+
+    printf("Contacts:\n");
+    char buffer[100];
+    while (fgets(buffer, sizeof(buffer), pF) != NULL) {
+        for (int i = 0; i < sizeof(buffer); i++) {
+            if (buffer[i] == '\0')
+                break;
+            if (buffer[i] == ',') {
+                printf("\t");
+                continue;
+            }
+            printf("%c", buffer[i]);
+        }
+        printf("\n");
+    }
 }
 
 void clearInputBuffer() {
