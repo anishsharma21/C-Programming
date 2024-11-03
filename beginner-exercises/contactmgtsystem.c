@@ -40,6 +40,7 @@ int main() {
                 break;
             case 'd':
                 printf("User choice is to delete a contact\n");
+                deleteContact();
                 break;
             case 'q':
                 system("clear");
