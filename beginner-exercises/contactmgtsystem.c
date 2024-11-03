@@ -6,6 +6,7 @@
 
 void viewContacts();
 void addContact();
+void deleteContact();
 void clearInputBuffer();
 
 typedef struct {
@@ -102,6 +103,56 @@ void addContact() {
     fclose(pF);
 
     printf("\nAdded contact successfully!\n");
+}
+
+void deleteContact() {
+    system("clear");
+    FILE* pF;
+    FILE* tempF;
+    pF = fopen("contacts.txt", "r");
+    if (pF == NULL) {
+        perror("Error opening contacts file.\n");
+        return;
+    }
+
+    tempF = fopen("temp.txt", "w");
+    if (tempF == NULL) {
+        perror("Error opening temporary file.\n");
+        fclose(pF);
+        return;
+    }
+
+    char name[64];
+    printf("Name of contact to delete: ");
+    if (fgets(name, sizeof(name), stdin) != NULL) {
+        name[strcspn(name, "\n")] = 0;
+
+        char line[256];
+        int found = 0;
+        while (fgets(line, sizeof(line), pF)) {
+            char tempName[64];
+            sscanf(line, "%63[^,]", tempName);
+            if (strcmp(name, tempName) != 0) {
+                fputs(line, tempF);
+            } else {
+                found = 1;
+            }
+        }
+
+        if (found) {
+            printf("Contact deleted successfully.\n");
+        } else {
+            printf("Name not found...\n");
+        }
+    } else {
+        perror("Invalid name.\n");
+    }
+
+    fclose(pF);
+    fclose(tempF);
+
+    remove("contacts.txt");
+    rename("temp.txt", "contacts.txt");
 }
 
 void clearInputBuffer() {
