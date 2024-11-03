@@ -10,6 +10,7 @@ typedef struct LinkedList {
     Node* head;
     Node* tail;
     int length;
+    void (*appendNode)(int data, struct LinkedList* linkedList);
 } LinkedList;
 
 Node* createNode();
@@ -30,12 +31,15 @@ int main() {
 }
 
 Node* createNode() {
-    return (Node*)malloc(sizeof(Node));
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->next = NULL;
+    return node;
 }
 
 Node* createNodeWithData(int data) {
     Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
+    node->next = NULL;
     return node;
 }
 
@@ -48,6 +52,7 @@ LinkedList* createLinkedList() {
     LinkedList* linkedList = (LinkedList*)malloc(sizeof(LinkedList));
     linkedList->head = node;
     linkedList->tail = node;
+    linkedList->appendNode = appendNode;
     return linkedList;
 }
 
