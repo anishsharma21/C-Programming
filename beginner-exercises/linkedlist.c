@@ -13,12 +13,17 @@ typedef struct LinkedList {
 } LinkedList;
 
 Node* createNode();
+Node* createNodeWithData(int data);
 void displayNodeValue(Node* node);
 LinkedList* createLinkedList();
+void appendNode(int data, LinkedList* linkedList);
 
 int main() {
     LinkedList* linkedList = createLinkedList();
     printf("Length of linked list: %d\n", linkedList->length);
+    printf("Address of head node: %p\nAddress of tail node: %p\n", linkedList->head, linkedList->tail);
+    printf("Value of head node: %d\nValue of tail node: %d\n", linkedList->head->data, linkedList->tail->data);
+    appendNode(5, linkedList);
     printf("Address of head node: %p\nAddress of tail node: %p\n", linkedList->head, linkedList->tail);
     printf("Value of head node: %d\nValue of tail node: %d\n", linkedList->head->data, linkedList->tail->data);
     return 0;
@@ -26,6 +31,12 @@ int main() {
 
 Node* createNode() {
     return (Node*)malloc(sizeof(Node));
+}
+
+Node* createNodeWithData(int data) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->data = data;
+    return node;
 }
 
 void displayNodeValue(Node* node) {
@@ -38,4 +49,10 @@ LinkedList* createLinkedList() {
     linkedList->head = node;
     linkedList->tail = node;
     return linkedList;
+}
+
+void appendNode(int data, LinkedList* linkedList) {
+    linkedList->tail->next = createNodeWithData(data);
+    linkedList->tail = linkedList->tail->next;
+    linkedList->length += 1;
 }
