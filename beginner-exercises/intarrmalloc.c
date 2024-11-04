@@ -27,6 +27,9 @@ int main() {
     printf("\nInteger array: ");
     displayArr(intArrPointer, size);
 
+    free(intPointer);
+    free(intArrPointer);
+
     return 0;
 }
 
