@@ -16,6 +16,9 @@ int main() {
     displayStrBytes(string, length);
     char* dupstring = mystrdup(string, length);
     displayStrBytes(dupstring, length);
+
+    free(dupstring);
+
     return 0;
 }
 
