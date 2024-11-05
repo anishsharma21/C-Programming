@@ -11,6 +11,8 @@ typedef struct Block {
     size_t size;
 } Block;
 
+static void handle_allocate();
+static void* my_malloc(int size);
 static void initialise_memory_pool();
 static void clear_input_buffer();
 
@@ -25,6 +27,9 @@ int main() {
         scanf("%c", &user_choice);
 
         switch (user_choice) {
+            case 'a':
+                handle_allocate();
+                break;
             case 'q':
                 exit(0);
             default:
@@ -35,6 +40,28 @@ int main() {
         clear_input_buffer();
         printf("\n");
     }
+}
+
+static void handle_allocate() {
+    int input_size;
+    printf("\nSpace to allocate: ");
+    clear_input_buffer();
+    if (scanf("%d", &input_size) != 1) {
+        fprintf(stderr, "Error: Invalid input. Please enter a valid number.\n");
+        printf("\n");
+        return;
+    }
+    if (input_size <= 0) {
+        fprintf(stderr, "Error: Size must be a positive number.\n");
+        return;
+    }
+    size_t size = (size_t)input_size;
+}
+
+static void* my_malloc(int size) {
+    // find free block -> returns pointer
+    // sets values of previous and next pointers at the block
+    //
 }
 
 static void initialise_memory_pool() {
