@@ -11,19 +11,41 @@ typedef struct Block {
     size_t size;
 } Block;
 
-void initialise_memory_pool();
+static void initialise_memory_pool();
+static void clear_input_buffer();
 
-Block* free_list = NULL;
-void* memory_pool = NULL;
+static Block* free_list = NULL;
+static void* memory_pool = NULL;
+static char user_choice;
 
 int main() {
-    return 0;
+    while (1) {
+        printf("Options:\nAllocate (a)\nFree (f)\nDisplay (d)\nQuit (q)\n\n");
+        printf("Choose an option: ");
+        scanf("%c", &user_choice);
+
+        switch (user_choice) {
+            case 'q':
+                exit(0);
+            default:
+                printf("Not quit\n");
+                break;
+        }
+
+        clear_input_buffer();
+        printf("\n");
+    }
 }
 
-void initialise_memory_pool() {
+static void initialise_memory_pool() {
     memory_pool = mmap(NULL, POOL_SIZE, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
     if (memory_pool == MAP_FAILED) {
         perror("mmap");
         exit(1);
     }
+}
+
+static void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
